@@ -4,6 +4,31 @@
 `psql` with the `-X` flag to prevent any `.psqlrc` commands from
 accidentally triggering the load of a previous DB version.**
 
+## Unreleased
+
+This version adds time_bucket_gapfill function that allows
+specifying the timezone to bucket for. Unfortunately this introduces
+an ambiguity with some previous call variations when an untyped
+start/finish argument is passed to time_bucket_gapfill. Some queries
+might need to be adjusted and either explicitly name the positional
+argument or resolve the type ambiguity by casting to the intended type.
+
+**Features**
+* #4670 Add timezone support to time_bucket_gapfill
+* #4650 Show warnings when not following best practices
+
+**Bugfixes**
+* #4619 Improve handling enum columns in compressed hypertables
+* #4673 Fix now() constification for VIEWs
+* #4681 Fix compression_chunk_size primary key
+* #4685 Improve chunk exclusion for space dimensions
+* #4696 Report warning when enabling compression on hypertable
+* #4676 Fix a deadlock when decompressing chunks and performing SELECTs
+
+**Thanks**
+* @maxtwardowski for reporting problems with chunk exclusion and space dimensions
+* @yuezhihan for reporting GROUP BY error when setting compress_segmentby with an enum column
+
 ## 2.8.0 (2022-08-30)
 
 This release adds major new features since the 2.7.2 release.
