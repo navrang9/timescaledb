@@ -24,6 +24,8 @@ argument or resolve the type ambiguity by casting to the intended type.
 * #4685 Improve chunk exclusion for space dimensions
 * #4696 Report warning when enabling compression on hypertable
 * #4676 Fix a deadlock when decompressing chunks and performing SELECTs
+* #4720 Fix chunk exclusion for prepared statements and dst changes
+* #4738 Fix the assorted epoll_ctl() errors that could occur with COPY into a distributed hypertable
 * #4739 Fix continuous aggregate migrate check constraint
 
 **Thanks**
